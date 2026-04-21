@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             CONNEXION MYSQL
+             Modifiez ces 4 paramètres selon votre configuration locale
+             ═══════════════════════════════════════════════════════════ -->
+
+        <!-- Driver JDBC MySQL -->
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+
+        <!-- URL de connexion :
+             jdbc:mysql://HOST:PORT/NOM_BASE?options
+             Remplacez 'gestion_produits' par le nom de votre base -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/gestion_produits?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8
+        </property>
+
+        <!-- Identifiants MySQL (à adapter) -->
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             DIALECT
+             ═══════════════════════════════════════════════════════════ -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             POOL DE CONNEXIONS (C3P0 intégré)
+             ═══════════════════════════════════════════════════════════ -->
+        <property name="hibernate.connection.pool_size">10</property>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SCHEMA AUTO : create-drop | create | update | validate
+             - "create"      : crée les tables au démarrage (efface les données)
+             - "update"      : met à jour sans effacer (recommandé en dev)
+             - "validate"    : vérifie le schéma sans le modifier
+             - "create-drop" : crée + supprime à la fermeture (tests)
+             ═══════════════════════════════════════════════════════════ -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Afficher les requêtes SQL dans la console (debug) -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Encodage -->
+        <property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             CLASSES ANNOTÉES (Entités)
+             ═══════════════════════════════════════════════════════════ -->
+        <mapping class="entities.Produit"/>
+        <mapping class="entities.User"/>
+
+    </session-factory>
+</hibernate-configuration>
