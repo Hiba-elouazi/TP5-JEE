@@ -50,7 +50,7 @@
     </c:choose>
 
     <div class="btns">
-        <a href="${pageContext.request.contextPath}/listProduits" class="btn-home">]Accueil</a>
+        <a href="${pageContext.request.contextPath}/Produits" class="btn-home">]Accueil</a>
         <a href="javascript:history.back()" class="btn-back">Retour</a>
     </div>
 </div>

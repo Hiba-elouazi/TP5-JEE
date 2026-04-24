@@ -118,6 +118,7 @@
                             </c:choose>
                         </div>
                         <form action="${pageContext.request.contextPath}/produits" method="post">
+                            <input type="hidden" name="id" value="${produitEdit.idProduit}" />
                             <input type="hidden" name="action" value="${produitEdit != null ? 'update' : 'add'}" />
                             <div class="form-group">
                                 <label>Nom du produit *</label>
@@ -129,7 +130,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Prix (MAD) *</label>
-                                <input type="number" name="prix" step="0.01" min="0" required />
+                                <input type="number" name="prix" step="0.01" min="0" value="${produitEdit.prix}" required />
                             </div>
                             <button type="submit" class="btn ${produitEdit != null ? 'btn-update' : 'btn-primary'}">
                                 <c:choose>
@@ -138,7 +139,7 @@
                                 </c:choose>
                             </button>
                             <c:if test="${produitEdit != null}">
-                                <a href="${pageContext.request.contextPath}/listProduits" class="btn-cancel">Annuler</a>
+                                <a href="${pageContext.request.contextPath}/Produits" class="btn-cancel">Annuler</a>
                             </c:if>
                         </form>
                     </div>
@@ -162,7 +163,7 @@
                     <input type="number" name="idProduit" placeholder="Recherche par ID..." min="1" />
                     <input type="text"   name="motCle"    value="${motCle}" placeholder="Nom ou description..." />
                     <button type="submit" class="btn-search">Chercher</button>
-                    <a href="${pageContext.request.contextPath}/listProduits" class="btn-reset">Reset</a>
+                    <a href="${pageContext.request.contextPath}/produits" class="btn-reset">Reset</a>
                 </div>
             </form>
 
